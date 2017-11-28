@@ -33,6 +33,8 @@ app.get('/db', function(req, res){
 /* API Part*/
 
 app.post('/api', async function(req, res){
+  console.log("Request recieved for: ")
+  console.log(req.body.url)
   let data = await link(req.body.url)
   console.log(data)
   res.send(data.favicon)
