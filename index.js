@@ -2,27 +2,24 @@ const link = require('./link')
 const app = require('express')()
 const nunjucks = require('nunjucks')
 
+//Configure Nunjucks Templating Engine
 nunjucks.configure('', {
     autoescape: true,
     express: app
 })
 
-app.get('/link', async function(req, res){
-  if(req.query.url){
-    res.send(await link(req.query.url))
-  }
-})
+//Listen on Default Port or Port 5000
+app.listen(process.env.PORT || 5000)
 
-app.listen(5000)
-
+//Process for all requests on "/"
 app.get('/', async function(req, res){
-  //res.send(await link(req.query.url))
-  if(req.query.url){
+
+  if(req.query.url){                //IF a url is received
     let theThing = await link(req.query.url)
     console.log(theThing)
-    res.render('html/index.html', {url : theThing.url, favicon: theThing.favicon})
+    res.render('html/index.html', {url : theThing.url, favicon: theThing.favicon})  //Generate HTML with Template
   }
-  else
+  else                            //ELSE just respond with basic HTML
     res.render('html/index.html')
 
 })
