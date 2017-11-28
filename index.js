@@ -1,8 +1,14 @@
 const link = require('./link')
 const app = require('express')()
 const nunjucks = require('nunjucks')
+const bodyParser = require('body-parser');
 
 const db = require('./db/favicons.json')
+
+//Express Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //Configure Nunjucks Templating Engine
 nunjucks.configure('', {
     autoescape: true,
