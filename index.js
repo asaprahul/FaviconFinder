@@ -23,3 +23,8 @@ app.get('/', async function(req, res){
     res.render('html/index.html')
 
 })
+
+//GET all files in the DB
+app.get('/db', function(req, res){
+  res.writeFile('./db/favicons.json')
+})
