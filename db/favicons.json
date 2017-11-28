@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "url": "https://google.com",
+        "favicon": "https://google.com/favicon.ico"
+    },
+    {
+        "id": 2,
+        "url": "https://facebook.com",
+        "favicon": "https://facebook.com/favicon.ico"
+    },
+    {
+        "id": 3,
+        "url": "http://crayon.co",
+        "favicon": "http://crayon.co/favicon.ico"
+    },
+    {
+        "id": 4,
+        "url": "http://zoox.com",
+        "favicon": "http://zoox.com/favicon.ico"
+    },
+    {
+        "id": 5,
+        "url": "https://youtube.com",
+        "favicon": "https://youtube.com/favicon.ico"
+    },
+    {
+        "id": 6,
+        "url": "http://rahul.ru"
+    },
+    {
+        "id": 7,
+        "url": "https://dell.com",
+        "favicon": "https://dell.com/favicon.ico"
+    },
+    {
+        "id": 8,
+        "url": "https://github.com",
+        "favicon": "https://github.com/favicon.ico"
+    },
+    {
+        "id": 9,
+        "url": "https://www.bose.com",
+        "favicon": "//static.bose.com/etc/designs/bose/consumer-products-2016/favicon.ico"
+    }
+]
