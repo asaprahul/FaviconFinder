@@ -2,6 +2,7 @@ const link = require('./link')
 const app = require('express')()
 const nunjucks = require('nunjucks')
 
+const db = require('./db/favicons.json')
 //Configure Nunjucks Templating Engine
 nunjucks.configure('', {
     autoescape: true,
@@ -26,5 +27,5 @@ app.get('/', async function(req, res){
 
 //GET all files in the DB
 app.get('/db', function(req, res){
-  res.writeFile('./db/favicons.json')
+  res.send(db)
 })
