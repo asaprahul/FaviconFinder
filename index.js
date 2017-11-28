@@ -29,3 +29,10 @@ app.get('/', async function(req, res){
 app.get('/db', function(req, res){
   res.send(db)
 })
+
+/* API Part*/
+
+app.post('/favicon', function(req, res){
+  let faviconURL = await link(req.body.url)
+  res.send(faviconURL.favicon)
+})
