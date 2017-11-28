@@ -32,7 +32,7 @@ app.get('/db', function(req, res){
 
 /* API Part*/
 
-app.post('/favicon', function(req, res){
+app.post('/favicon', async function(req, res){
   let faviconURL = await link(req.body.url)
   res.send(faviconURL.favicon)
 })
