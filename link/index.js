@@ -57,6 +57,7 @@ const getLinkFromHTML = function(url) {
         }).get()
 
         setTimeout(() => {                //If NOT FOUND in 6 seconds, respond with FALSE
+          console.log("<<<TIMEOUT REACHED>>>")
           resolve(false)
         }, 6000)
         resolve(linkHrefs[0]);
