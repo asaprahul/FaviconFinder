@@ -26,15 +26,12 @@ exports.insert = function(url, favicon) {
 //Find an object with the given URL
 exports.get = function(url) {
 
-  console.log("DB: Looking for ", url)
-
   let object = data.find(function(element) {
     return element.url === url
   })
-  if(object) {
-    console.log('DB: Returning ', object)
+  
+  if(object)
     return object  //Returns the Object if FOUND
-  }
   else
     return false  //Returns False if NOT FOUND
 }

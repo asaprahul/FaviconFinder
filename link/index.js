@@ -28,8 +28,7 @@ const getFaviconLink = async function(url) {
     if(link){
       db.insert(url, link)       //IF FOUND, insert into DB and return the Link
       //return link
-      //return db.get(url)
-      return {"id" : "x", "url": url, "favicon": link}
+      return db.get(url)
     }
     else {
       console.log(link)
