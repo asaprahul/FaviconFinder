@@ -55,7 +55,7 @@ const getLinkFromHTML = function(url) {
     setTimeout(() => {                //If NOT FOUND in 6 seconds, respond with FALSE
       console.log("<<<TIMEOUT REACHED>>>")
       resolve(false)
-    }, 7000)
+    }, 5000)
 
     request(url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
