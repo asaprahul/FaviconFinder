@@ -38,9 +38,13 @@ const getFaviconLink = async function(url) {
   catch(e) {                      //ELSE Find it in the HTML source of the webpage
     console.log(e)
     let link = await getLinkFromHTML(url)
-    db.insert(url, link)
-    //return link
-    return db.get(url)
+    //Insert in DB only if link is !false
+    if(link){
+      db.insert(url, link)
+      return db.get(url)
+    }
+    else
+      return link
   }
 }
 
@@ -76,7 +80,7 @@ const getLinkFromURL = function(url) {
         resolve(url + '/favicon.ico')   //IF FOUND return example.com/favicon.ico
       }
       else
-        resolve(false) //FALSE if NOT FOUND in example.com/favicon.ico
+        resolve(false)                //FALSE if NOT FOUND in example.com/favicon.ico
     })
   })
 
