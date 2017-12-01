@@ -14,7 +14,9 @@
     "cheerio": "^1.0.0-rc.2",
     "csv-parse": "^2.0.0",
     "express": "^4.16.2",
+    "extract-domain": "^2.0.0",
     "mongodb": "^2.2.33",
+    "needle": "^2.0.1",
     "node-datetime": "^2.0.3",
     "nunjucks": "^3.0.1",
     "request": "^2.83.0"

@@ -1,11 +1,13 @@
 const fs = require('fs')
 const parse = require('csv-parse')
 const request = require('request')
+const needle = require('needle')
+
 const getRawLinks = async function(){
   return new Promise(function(resolve, reject){
     parse(fs.readFileSync('../db/alexa.csv'), {columns: false, trim: true}, function(err, rows) {
       //First 200,000 links
-      let links = rows.slice(0, 20).map(value => {
+      let links = rows.slice(0, 500).map(value => {
         return value.undefined
       })
       resolve(links)
@@ -13,37 +15,21 @@ const getRawLinks = async function(){
   })
 }
 
-// fs.readFileSync('../db/alexa.csv', function (err, fileData) {
-//   parse(fileData, {columns: false, trim: true}, function(err, rows) {
-//     //First 200,000 links
-//     links = rows.slice(0, 200000).map(value => {
-//       return value.undefined
-//     })
-//   })
-// })
-
 const combinations = async function(){
   let links = await getRawLinks()
   for(i in links){
-    makeRequest('http://'+i)
-    makeRequest('https://'+i)
-    makeRequest('http://www.'+i)
-    makeRequest('https://www.'+i)
+    makeRequest('http://'+links[i])
+    // makeRequest('https://www.'+links[i])
+    // makeRequest('http://www.'+links[i])
+    makeRequest('https://'+links[i])
   }
 }
 
 const makeRequest = function(link){
-  request({
-    url: 'https://rahulfaviconfinder.herokuapp.com/api',
-    method: 'POST',
-    headers: '',
-    form: {
-      'url' : link
-    }
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        console.log(body)
-    }
+
+  needle.post('localhost:5000/api', {url:link},
+      function(err, resp, body){
+          console.log(body);
   })
 }
 

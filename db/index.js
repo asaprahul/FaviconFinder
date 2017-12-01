@@ -7,6 +7,7 @@ Simulates a simple NoSQL DB for the prototype of faviconFinderApp
 
 const fs = require('fs')
 const data = require('./favicons.json')
+const domain = require('extract-domain')
 
 //Insertion Operation
 exports.insert = function(url, favicon) {
@@ -24,11 +25,16 @@ exports.insert = function(url, favicon) {
 
 //Find an object with the given URL
 exports.get = function(url) {
+
+  console.log("DB: Looking for ", url)
+
   let object = data.find(function(element) {
     return element.url === url
   })
-  if(object)
+  if(object) {
+    console.log('DB: Returning ', object)
     return object  //Returns the Object if FOUND
+  }
   else
     return false  //Returns False if NOT FOUND
 }
@@ -36,4 +42,20 @@ exports.get = function(url) {
 //Get all the Favicons
 exports.getAll = function() {
   return data
+}
+
+exports.getByDomain = function(url) {
+
+  console.log("> ", "> ")
+  let object = data.filter(function(element) {
+    console.log(domain(element.url))
+    if(domain(element.url) === domain(url))
+      return element
+  })
+  console.log(object)
+  console.log("> ", "> ")
+  if(object)
+    return object[0]  //Returns the Object if FOUND
+  else
+    return false  //Returns False if NOT FOUND
 }
