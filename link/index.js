@@ -1,11 +1,12 @@
 const cheerio = require('cheerio')    //Parse HTML
 const request = require('request')    //Make HTTP Requess to Webpages
 const db = require('../db')           //Connect to custom DB simulator
-
+const dateTime = require('node-datetime')    //Log Date and Time
 
 
 /* Main Function: First check for URL in Database, else use other 2 methods to find Favicon url*/
 const findFaviconLink = async function(url) {
+  console.log("<",dateTime.create().format('H:M'),"> PROCESSING: ", url)  //Log a Request
   try{
     let link = await db.get(url)    //First check in the DB
     if(link)
@@ -54,7 +55,10 @@ const getLinkFromHTML = function(url) {
           if($(this).attr('href').includes('.ico'))      //Filter <link> hrefs with '.ico' in them
             return $(this).attr('href')
         }).get()
-        setTimeout(resolve(false), 6000)          //If NOT FOUND in 6 seconds, respond with FALSE
+
+        setTimeout(() => {                //If NOT FOUND in 6 seconds, respond with FALSE
+          resolve(false)
+        }, 6000)
         resolve(linkHrefs[0]);
 
       }
