@@ -48,6 +48,11 @@ const getFaviconLink = async function(url) {
 const getLinkFromHTML = function(url) {
 
   return new Promise(function (resolve, reject){
+    setTimeout(() => {                //If NOT FOUND in 6 seconds, respond with FALSE
+      console.log("<<<TIMEOUT REACHED>>>")
+      resolve(false)
+    }, 7000)
+
     request(url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         let $ = cheerio.load(body)
@@ -55,13 +60,7 @@ const getLinkFromHTML = function(url) {
           if($(this).attr('href').includes('.ico'))      //Filter <link> hrefs with '.ico' in them
             return $(this).attr('href')
         }).get()
-
-        setTimeout(() => {                //If NOT FOUND in 6 seconds, respond with FALSE
-          console.log("<<<TIMEOUT REACHED>>>")
-          resolve(false)
-        }, 6000)
         resolve(linkHrefs[0]);
-
       }
     })
   })
