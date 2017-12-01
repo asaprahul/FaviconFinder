@@ -51,10 +51,12 @@ const getLinkFromHTML = function(url) {
       if (!error && response.statusCode == 200) {
         let $ = cheerio.load(body)
         let linkHrefs = $('link').map(function(i) {      //Get all <link> tags
-          if($(this).attr('href').includes('.ico'))       //Filter <link> hrefs with '.ico' in them
+          if($(this).attr('href').includes('.ico'))      //Filter <link> hrefs with '.ico' in them
             return $(this).attr('href')
         }).get()
+        setTimeout(resolve(false), 6000)          //If NOT FOUND in 6 seconds, respond with FALSE
         resolve(linkHrefs[0]);
+
       }
     })
   })
