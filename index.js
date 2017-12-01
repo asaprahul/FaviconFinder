@@ -23,13 +23,13 @@ app.get('/', async function(req, res){
 
   if(req.query.url){                //IF a url is received
     let theThing = await link(req.query.url)
-    
+
     console.log(theThing)
 
-    if(theThing)
+    if(theThing.favicon)
       res.render('html/index.html', {url : theThing.url, favicon: theThing.favicon})  //Generate HTML with Template
     else
-      res.render('html/index.html', {url : "Sorry!", favicon: "We couldn't find Favicon for that URL"})
+      res.render('html/index.html', {url : "Sorry!", favicon: "We couldn't find for that URL"})
   }
   else                            //ELSE just respond with basic HTML
     res.render('html/index.html')
@@ -47,7 +47,7 @@ app.post('/api', async function(req, res){
   console.log(req.body)
   let data = await link(req.body.url)
   console.log(data)
-  if(data)
+  if(data.favicon)
     res.send(data.favicon)
   else
     res.send("Sorry! Unable to find Favicon URL")
