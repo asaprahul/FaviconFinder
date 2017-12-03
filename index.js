@@ -26,7 +26,7 @@ app.get('/', async function(req, res){
 
     console.log(theThing)
 
-    if(theThing.favicon)
+    if(theThing)
       res.render('html/index.html', {url : theThing.url, favicon: theThing.favicon})  //Generate HTML with Template
     else
       res.render('html/index.html', {url : "Sorry!", favicon: "We couldn't find for that URL"})

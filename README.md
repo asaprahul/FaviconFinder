@@ -1,4 +1,23 @@
-# MessageGenerator API
+# FaviconFinder: App & API
+
+(Scroll down for **API Documentation**)
+
+To run the application locally: 
+
+Pre-requisites: **Node.js V8.x.x**
+
+Clone the repo
+```
+$ git clone https://github.com/rahulsonwalkar/FaviconFinder
+```
+Navigate into the directory and install the dependencies.
+```
+$ cd FaviconFinder
+$ npm install
+$ npm start
+```
+
+## How to use the API
 
 API to generate welcome text-messages for your hotel guests.
 
