@@ -2,7 +2,7 @@
 
 (Scroll down for **API Documentation**)
 
-To run the application locally: 
+To run the application locally:
 
 Pre-requisites: **Node.js V8.x.x**
 
@@ -19,11 +19,7 @@ $ npm start
 
 ## How to use the API
 
-API to generate welcome text-messages for your hotel guests.
-
 API implementation of the [Favicon Finder App](https://github.com/rahulsonwalkar/FaviconFinder)
-
-## How it works:
 
 Send POST requests to ```https://rahulfaviconfinder.herokuapp.com/API```
 
@@ -38,7 +34,6 @@ The body of the request should contain this object:
 ```
 Response body: "https://facebook.com/favicon.ico"
 ```
-
 
 ## Sample cURL POST request:
 
